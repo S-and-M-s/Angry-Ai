@@ -20,3 +20,8 @@ A project to create pixel games and bots to train on playing them to the best wa
 ![img](https://i.ibb.co/Nmmb98S/leader-board-page.jpg)
 
 ![img](https://i.ibb.co/DgZX01N/main-page.jpg)
+
+
+### version 1.00 
+initial GUI and logic was implemented
+ 
