@@ -131,8 +131,7 @@ class Bird:
         :return: None
         """
         return pygame.mask.from_surface(self.img)
-
-
+var_a=0
 class Pipe():
     """
     represents a pipe object
@@ -170,12 +169,18 @@ class Pipe():
         self.top = self.height - self.PIPE_TOP.get_height()
         self.bottom = self.height + self.GAP
 
-    def move(self):
+    def move(self,score):
         """
         move pipe based on vel
         :return: None
         """
-        self.x -= self.VEL
+        global a
+        global var_a
+        if score % 3 ==0 and score > 0 and score>var_a:
+            var_a+=3
+            a+=5
+            pass
+        self.x -= a
 
     def draw(self, win):
         """
@@ -208,7 +213,7 @@ class Pipe():
             return True
 
         return False
-
+a=Pipe(1).VEL
 class Base:
     """
     Represnts the moving floor of the game
@@ -552,7 +557,7 @@ def eval_genomes(genomes, config):
         rem = []
         add_pipe = False
         for pipe in pipes:
-            pipe.move()
+            pipe.move(score)
             # check for collision
             for bird in birds:
                 if pipe.collide(bird, win):
