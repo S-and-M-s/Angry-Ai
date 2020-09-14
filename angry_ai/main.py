@@ -28,10 +28,10 @@ DRAW_LINES = False
 WIN = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
 pygame.display.set_caption("Flappy Bird")
 
-pipe_img = pygame.transform.scale2x(pygame.image.load(os.path.join("assets/images","pipe.png")).convert_alpha())
-bg_img = pygame.transform.scale(pygame.image.load(os.path.join("assets/images","bg.png")).convert_alpha(), (600, 900))
-bird_images = [pygame.transform.scale2x(pygame.image.load(os.path.join("assets/images","bird" + str(x) + ".png"))) for x in range(1,4)]
-base_img = pygame.transform.scale2x(pygame.image.load(os.path.join("assets/images","base.png")).convert_alpha())
+pipe_img = pygame.transform.scale2x(pygame.image.load(os.path.join("../assets/images","pipe.png")).convert_alpha())
+bg_img = pygame.transform.scale(pygame.image.load(os.path.join("../assets/images","bg.png")).convert_alpha(), (600, 900))
+bird_images = [pygame.transform.scale2x(pygame.image.load(os.path.join("../assets/images","bird" + str(x) + ".png"))) for x in range(1,4)]
+base_img = pygame.transform.scale2x(pygame.image.load(os.path.join("../assets/images","base.png")).convert_alpha())
 
 gen = 0
 
@@ -627,7 +627,7 @@ if __name__ == '__main__':
     local_dir = os.path.dirname(__file__)
     config_path = os.path.join(local_dir, 'config-feedforward.txt')
     run(config_path)
-    
+
 # import pygame
 # import neat
 # import time
@@ -917,7 +917,7 @@ if __name__ == '__main__':
 
 
 # def eval_genomes(genomes, config):
-#     """ 
+#     """
 #     runs the simulation of the current population of
 #     birds and sets their fitness based on the distance they
 #     reach in the game.
@@ -926,12 +926,12 @@ if __name__ == '__main__':
 #     win = WIN
 #     gen += 1
 
-    
+
 #     nets = []
 #     birds = []
 #     ge = []
 #     for genome_id, genome in genomes:
-#         genome.fitness = 0  
+#         genome.fitness = 0
 #         net = neat.nn.FeedForwardNetwork.create(genome, config)
 #         nets.append(net)
 #         birds.append(Bird(230,350))
@@ -956,17 +956,17 @@ if __name__ == '__main__':
 
 #         pipe_ind = 0
 #         if len(birds) > 0:
-#             if len(pipes) > 1 and birds[0].x > pipes[0].x + pipes[0].PIPE_TOP.get_width():  
-#                 pipe_ind = 1                                                                 
+#             if len(pipes) > 1 and birds[0].x > pipes[0].x + pipes[0].PIPE_TOP.get_width():
+#                 pipe_ind = 1
 
-#         for x, bird in enumerate(birds):  
+#         for x, bird in enumerate(birds):
 #             ge[x].fitness += 0.1
 #             bird.move()
 
-            
+
 #             output = nets[birds.index(bird)].activate((bird.y, abs(bird.y - pipes[pipe_ind].height), abs(bird.y - pipes[pipe_ind].bottom)))
 
-#             if output[0] > 0.5:  
+#             if output[0] > 0.5:
 #                 bird.jump()
 
 #         base.move()

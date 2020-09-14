@@ -27,18 +27,18 @@ game_resumed = False
 floor_x = 0
 
 # Game images
-pipe_img = pygame.transform.scale2x(pygame.image.load(os.path.join("assets/images", "pipe.png")).convert_alpha())
-bg_img = pygame.transform.scale(pygame.image.load(os.path.join("assets/images", "bg.png")).convert_alpha(), (576, 700))
-base_img = pygame.transform.scale2x(pygame.image.load("assets/images/base.png").convert())
-bird_up_img = pygame.transform.scale2x(pygame.image.load(os.path.join("assets/images", "bird1.png")).convert_alpha())
-bird_mid_img = pygame.transform.scale2x(pygame.image.load(os.path.join("assets/images", "bird2.png")).convert_alpha())
-bird_down_img = pygame.transform.scale2x(pygame.image.load(os.path.join("assets/images", "bird3.png")).convert_alpha())
+pipe_img = pygame.transform.scale2x(pygame.image.load(os.path.join("../assets/images", "pipe.png")).convert_alpha())
+bg_img = pygame.transform.scale(pygame.image.load(os.path.join("../assets/images", "bg.png")).convert_alpha(), (576, 700))
+base_img = pygame.transform.scale2x(pygame.image.load("../assets/images/base.png").convert())
+bird_up_img = pygame.transform.scale2x(pygame.image.load(os.path.join("../assets/images", "bird1.png")).convert_alpha())
+bird_mid_img = pygame.transform.scale2x(pygame.image.load(os.path.join("../assets/images", "bird2.png")).convert_alpha())
+bird_down_img = pygame.transform.scale2x(pygame.image.load(os.path.join("../assets/images", "bird3.png")).convert_alpha())
 bird_images = [bird_down_img, bird_mid_img, bird_up_img]
 bird_index = 2
 bird_surface = bird_images[bird_index]
 bird_rect = bird_surface.get_rect(center=(100, 300))
 # game_over_image
-game_over_surface = pygame.transform.scale2x(pygame.image.load("assets/images/download.png").convert_alpha())
+game_over_surface = pygame.transform.scale2x(pygame.image.load("../assets/images/go.png").convert_alpha())
 game_over_rect = game_over_surface.get_rect(center = (288,300))
 
 # Timer for bird's wings
@@ -57,10 +57,10 @@ pygame.time.set_timer(SPAWNPIPE, 1200)
 pipe_height = [300,400,500,600,700]
 
 # sounds
-flap_sound = pygame.mixer.Sound("assets/sounds/sfx_wing.wav")
-death_sound = pygame.mixer.Sound("assets/sounds/sfx_hit.wav")
-over_sound = pygame.mixer.Sound("assets/sounds/a.wav")
-score_sound = pygame.mixer.Sound("assets/sounds/sfx_point.wav")
+flap_sound = pygame.mixer.Sound("../assets/sounds/sfx_wing.wav")
+death_sound = pygame.mixer.Sound("../assets/sounds/sfx_hit.wav")
+over_sound = pygame.mixer.Sound("../assets/sounds/a.wav")
+score_sound = pygame.mixer.Sound("../assets/sounds/sfx_point.wav")
 score_sound_countdown = 100
 
 class Pipe:
@@ -151,22 +151,22 @@ def player_loop():
     floor_x = 0
 
     # Game images
-    pipe_img = pygame.transform.scale2x(pygame.image.load(os.path.join("assets/images", "pipe.png")).convert_alpha())
-    bg_img = pygame.transform.scale(pygame.image.load(os.path.join("assets/images", "bg.png")).convert_alpha(),
+    pipe_img = pygame.transform.scale2x(pygame.image.load(os.path.join("../assets/images", "pipe.png")).convert_alpha())
+    bg_img = pygame.transform.scale(pygame.image.load(os.path.join("../assets/images", "bg.png")).convert_alpha(),
                                     (576, 700))
-    base_img = pygame.transform.scale2x(pygame.image.load("assets/images/base.png").convert())
+    base_img = pygame.transform.scale2x(pygame.image.load("../assets/images/base.png").convert())
     bird_up_img = pygame.transform.scale2x(
-        pygame.image.load(os.path.join("assets/images", "bird1.png")).convert_alpha())
+        pygame.image.load(os.path.join("../assets/images", "bird1.png")).convert_alpha())
     bird_mid_img = pygame.transform.scale2x(
-        pygame.image.load(os.path.join("assets/images", "bird2.png")).convert_alpha())
+        pygame.image.load(os.path.join("../assets/images", "bird2.png")).convert_alpha())
     bird_down_img = pygame.transform.scale2x(
-        pygame.image.load(os.path.join("assets/images", "bird3.png")).convert_alpha())
+        pygame.image.load(os.path.join("../assets/images", "bird3.png")).convert_alpha())
     bird_images = [bird_down_img, bird_mid_img, bird_up_img]
     bird_index = 2
     bird_surface = bird_images[bird_index]
     bird_rect = bird_surface.get_rect(center=(100, 300))
     # game_over_image
-    game_over_surface = pygame.transform.scale2x(pygame.image.load("assets/images/download.png").convert_alpha())
+    game_over_surface = pygame.transform.scale2x(pygame.image.load("../assets/images/download.png").convert_alpha())
     game_over_rect = game_over_surface.get_rect(center=(288, 300))
 
     # Timer for bird's wings
@@ -280,7 +280,7 @@ def player_loop():
 
 if __name__ == "__main__":
     player_loop()
-    
+
 #  import os
 # import sys
 # import random

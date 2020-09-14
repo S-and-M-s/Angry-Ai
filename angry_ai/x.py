@@ -12,7 +12,7 @@ pygame.display.flip() # Update the full display Surface to the screen
 
 font = pygame.font.SysFont(None, 50)  # create a Font object from the system fonts
 
-bg_img = pygame.transform.scale(pygame.image.load(os.path.join("assets/images", "bg.png")).convert_alpha(), (576, 700))
+bg_img = pygame.transform.scale(pygame.image.load(os.path.join("../assets/images", "bg.png")).convert_alpha(), (576, 700))
 # convert_alpha() change the pixel format of an image including per pixel alphas
 
 def draw_text(text, font, color, surface, x, y):

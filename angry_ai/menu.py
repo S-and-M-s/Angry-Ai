@@ -4,7 +4,9 @@ from main import *
 from one_player import *
 
 class Menu():
-    def __init__(self, game):
+
+    def __init__(self, game=None):
+
         self.game = game
         self.mid_w, self.mid_h = self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2
         self.run_display = True
