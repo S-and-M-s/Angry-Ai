@@ -72,8 +72,12 @@ class Pipe:
 
 
     def move_pipe(pipes):
+        a=3
+        if score% 5 == 0:
+            a+=5
+
         for pipe in pipes:
-            pipe.centerx -= 3
+            pipe.centerx -= a
         return pipes
 
 
