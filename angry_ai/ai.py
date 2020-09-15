@@ -8,9 +8,9 @@ from subprocess import call
 
 pygame.font.init()  # init font
 
-WIN_WIDTH = 600
+WIN_WIDTH = 560
 WIN_HEIGHT = 670
-FLOOR = 600
+FLOOR = 595
 STAT_FONT = pygame.font.SysFont("comicsans", 50)
 END_FONT = pygame.font.SysFont("comicsans", 70)
 DRAW_LINES = False
@@ -53,7 +53,7 @@ def eval_genomes(genomes, config):
                 run = False
                 pygame.quit()
                 quit()
-                os.system('main_screen.py')
+                call(["python", "angry_ai/main_screen.py"])
                 break
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
@@ -115,12 +115,7 @@ def eval_genomes(genomes, config):
         draw_window(WIN, birds, pipes, base, score, gen, pipe_ind)
 
         if score > 20:
-            # winner = neat.Checkpointer(nets[0])
-            # winner.save_checkpoint()
-            # print('this is the winner baby')
-            # print(winner)
-            # with gzip.open('work_bruh', 'w', compresslevel=5) as f:
-            #   pickle.dump(nets[0], f, protocol=pickle.HIGHEST_PROTOCOL)
+
             break
 
 def run(config_path):

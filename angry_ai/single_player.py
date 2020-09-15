@@ -1,6 +1,5 @@
 from gui import Bird, Pipe, Base, draw_window, blitRotateCenter
 import os
-import neat
 import pygame
 import sys
 from subprocess import call
@@ -12,9 +11,9 @@ pygame.display.set_caption("Angry AI")
 pygame.font.init()  # init font
 game_font = pygame.font.SysFont("", 50)
 
-WIN_WIDTH = 600
+WIN_WIDTH = 560
 WIN_HEIGHT = 670
-FLOOR = 600
+FLOOR = 595
 STAT_FONT = pygame.font.SysFont("comicsans", 50)
 END_FONT = pygame.font.SysFont("comicsans", 70)
 DRAW_LINES = False
@@ -30,15 +29,8 @@ game_resumed = False
 # Background image
 
 bg_img = pygame.transform.scale(pygame.image.load(
-    os.path.join("assets/images", "bg.png")).convert_alpha(), (576, 700))
+    os.path.join("assets/images", "bg4.jpg")).convert_alpha(), (576, 700))
 
-# game_over_image
-game_over_surface = pygame.transform.scale(pygame.image.load(
-    os.path.join("assets/images", "gameover.png")).convert_alpha(), (576, 700))
-
-game_over_rect = game_over_surface.get_rect(center=(250, 200))
-def draw_game_over():
-    WIN.blit(game_over_surface,game_over_rect)
 
 def font_display(game_state):
     if game_state == "main":
@@ -84,13 +76,11 @@ def draw_window(win, bird, pipes, base, score, pipe_ind, high_score,gameover=Fal
     if gameover == True:
         base.draw(win)
         bird.draw(win)
-        print('i lost here ')
-        WIN.blit(game_over_surface,game_over_rect)
+        # WIN.blit(game_over_surface,game_over_rect)
         high_score = update_score(score, high_score)
         score = 0
 
     else:
-        print('still going ')
         win.blit(bg_img, (0, 0))
 
         for pipe in pipes:
@@ -154,8 +144,8 @@ def player_loop():
                 if event.type == pygame.KEYDOWN:
                   if event.key == pygame.K_ESCAPE:
                      run = False
-                     pygame.quit()
                      call(["python", "angry_ai/main_screen.py"])
+                     pygame.quit()
                      quit()
 
                 # to back to main menu
@@ -163,7 +153,7 @@ def player_loop():
                     if event.key == pygame.K_UP:
                         draw_window(win, bird, pipes, base, score, 1, high_score,gameover=True)
                         run =False
-                        os.system('./angry_ai/main_screen.py')
+                        call(["python", "angry_ai/main_screen.py"])
                 if event.key == pygame.K_SPACE and game_active == False:
                         game_active = True
                         bird = Bird(200, 300)

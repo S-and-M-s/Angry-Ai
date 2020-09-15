@@ -5,31 +5,28 @@ import neat
 import time
 import os
 import random
-import pickle
-import gzip
-import json
+
 
 pygame.font.init()  # init font
 
-WIN_WIDTH = 600
+WIN_WIDTH = 570
 WIN_HEIGHT = 670
-FLOOR = 730
+FLOOR = 620
 STAT_FONT = pygame.font.SysFont("comicsans", 50)
 END_FONT = pygame.font.SysFont("comicsans", 70)
-DRAW_LINES = False
+DRAW_LINES = True
 pygame.display.set_caption("Flappy Bird")
-pygame.init()
-os.environ["SDL_VIDEODRIVER"] = "dummy"
+
 WIN = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
 gen = 0
 pipe_img = pygame.transform.scale2x(
-    pygame.image.load(os.path.join("assets/images", "pipe.png")))
+    pygame.image.load(os.path.join("assets/images", "pipe2.png")))
 bg_img = pygame.transform.scale(pygame.image.load(
-    os.path.join("assets/images", "bg.png")), (600, 900))
+    os.path.join("assets/images", "night.png")).convert_alpha(), (576, 700))
 bird_img = [pygame.transform.scale2x(pygame.image.load(
-    os.path.join("assets/images", "bird" + str(x) + ".png"))) for x in range(1, 4)]
+    os.path.join("assets/images", "small" + str(x) + ".png"))) for x in range(1, 4)]
 base_img = pygame.transform.scale2x(
-    pygame.image.load(os.path.join("assets/images", "base.png")))
+    pygame.image.load(os.path.join("assets/images", "base1.png")))
 stat_font = pygame.font.SysFont('comicsans', 50)
 
 
@@ -202,10 +199,6 @@ class Pipe():
         t_point = bird_mask.overlap(top_mask, top_offset)
 
         if b_point or t_point:
-
-            print("******************************  ",self.x, " ******************************")
-
-
             return True
 
         return False
