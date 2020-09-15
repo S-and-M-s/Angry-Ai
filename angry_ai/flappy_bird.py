@@ -11,7 +11,7 @@ while (cap.isOpened()):
     ret, frame = cap.read()
     if ret == True:
         frame150 = rescale_frame(frame, percent=150)
-        cv2.imshow("Fllapy Bird Game - S&M's", frame150)
+        cv2.imshow("Flappy Bird -S&M's", frame150)
 #
         # cv2.imshow('Frame', frame)
 #

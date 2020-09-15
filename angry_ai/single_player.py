@@ -7,7 +7,7 @@ from subprocess import call
 # initials parameters:
 pygame.init()
 pygame.mixer.pre_init(frequency=44100, channels=1, buffer=512, size=16)
-pygame.display.set_caption("Angry AI")
+pygame.display.set_caption("Flappy Bird -S&M's")
 pygame.font.init()  # init font
 game_font = pygame.font.SysFont("", 50)
 
