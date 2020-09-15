@@ -1,4 +1,5 @@
 from __future__ import print_function
+
 import pygame
 import neat
 import time
@@ -17,6 +18,8 @@ STAT_FONT = pygame.font.SysFont("comicsans", 50)
 END_FONT = pygame.font.SysFont("comicsans", 70)
 DRAW_LINES = False
 pygame.display.set_caption("Flappy Bird")
+pygame.init()
+os.environ["SDL_VIDEODRIVER"] = "dummy"
 WIN = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
 gen = 0
 pipe_img = pygame.transform.scale2x(
@@ -199,6 +202,10 @@ class Pipe():
         t_point = bird_mask.overlap(top_mask, top_offset)
 
         if b_point or t_point:
+
+            print("******************************  ",self.x, " ******************************")
+
+
             return True
 
         return False
