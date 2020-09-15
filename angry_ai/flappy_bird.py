@@ -1,10 +1,11 @@
 import cv2
 
-cap = cv2.VideoCapture('intro2.mkv')
+cap = cv2.VideoCapture('angry_ai/intro2.mkv')
 
 def rescale_frame(frame, percent=75):
-  width = 576
-  height = 900
+  width = 500
+  height = 670
+
   dim = (width, height)
   return cv2.resize(frame, dim, interpolation=cv2.INTER_AREA)
 
@@ -33,6 +34,13 @@ cap.release()
 cv2.destroyAllWindows()
 
 
+from main_screen import Game
+
+
+g = Game()
+
+while g.running:
+    g.curr_menu.display_menu()
 
 
 
@@ -42,4 +50,4 @@ cv2.destroyAllWindows()
 
 
 
-
+#

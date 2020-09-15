@@ -3,12 +3,12 @@ from single_player  import player_loop
 from ai  import run
 import pygame
 import os
-from flappy_bird import *
+# from flappy_bird import *
 
 pygame.font.init()
-cap.release()
+# cap.release()
 
-cv2.destroyAllWindows()
+# cv2.destroyAllWindows()
 
 class Game():
     def __init__(self):
@@ -18,7 +18,7 @@ class Game():
         self.DISPLAY_W, self.DISPLAY_H = 600, 670
         self.display = pygame.Surface((self.DISPLAY_W,self.DISPLAY_H))
         self.window = pygame.display.set_mode(((self.DISPLAY_W,self.DISPLAY_H)))
-        self.font_name = '../assets/fonts/8-BITWONDER.TTF'
+        self.font_name = 'assets/fonts/8-BITWONDER.TTF'
         self.BLACK, self.WHITE = (0, 0, 0), (255, 255, 255)
         self.main_menu = MainMenu(self)
         self.options = OptionsMenu(self)
