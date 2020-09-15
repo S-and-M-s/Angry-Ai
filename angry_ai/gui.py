@@ -15,7 +15,7 @@ FLOOR = 620
 STAT_FONT = pygame.font.SysFont("comicsans", 50)
 END_FONT = pygame.font.SysFont("comicsans", 70)
 DRAW_LINES = True
-pygame.display.set_caption("Flappy Bird")
+pygame.display.set_caption("Flappy Bird -S&M's")
 
 WIN = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
 gen = 0
