@@ -3,6 +3,7 @@ import os
 import neat
 import pygame
 import sys
+from subprocess import call
 
 # initials parameters:
 pygame.init()
@@ -11,7 +12,7 @@ pygame.display.set_caption("Angry AI")
 pygame.font.init()  # init font
 game_font = pygame.font.SysFont("", 50)
 
-WIN_WIDTH = 500
+WIN_WIDTH = 600
 WIN_HEIGHT = 670
 FLOOR = 600
 STAT_FONT = pygame.font.SysFont("comicsans", 50)
@@ -137,40 +138,37 @@ def player_loop():
     score_sound_countdown = 100
     run = True
     while run:
-        clock.tick(35)
+        clock.tick(30)
         draw_window(win, bird, pipes, base, score, 1, high_score,gameover=False)
-
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
-
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE and game_active:
-                    bird.jump()
-                    game_resumed = True
-                    flap_sound.play()
-                if event.key == pygame.K_UP :
-                    player_loop()
+                      bird.jump()
+                      game_resumed = True
+                      flap_sound.play()
                 # to finish the game
                 if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_ESCAPE:
-                        game_resumed = False
-                        pygame.quit()
-                        quit()
-                        break
+                  if event.key == pygame.K_ESCAPE:
+                     run = False
+                     pygame.quit()
+                     call(["python", "angry_ai/main_screen.py"])
+                     quit()
+
                 # to back to main menu
                 if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_BACKSPACE:
-                        game_resumed = False
-
+                    if event.key == pygame.K_UP:
+                        draw_window(win, bird, pipes, base, score, 1, high_score,gameover=True)
+                        run =False
+                        os.system('./angry_ai/main_screen.py')
                 if event.key == pygame.K_SPACE and game_active == False:
-                    game_active = True
-
-                    bird = Bird(200, 300)
-                    score = 0
-                    over_sound.stop()
+                        game_active = True
+                        bird = Bird(200, 300)
+                        score = 0
+                        over_sound.stop()
 
             pipe_ind = 0
             if len(pipes) > 1 and bird.x > pipes[0].x + pipes[0].PIPE_TOP.get_width():
@@ -186,10 +184,6 @@ def player_loop():
                     draw_window(win, bird, pipes, base, score, 1, high_score,gameover=True)
                     run = False
 
-                    # game_active=False
-                    # high_score=score
-                    # update_score(score,high_score)
-                    # score = 0
                 if not pipe.passed and pipe.x < bird.x:
                     pipe.passed = True
                     add_pipe = True
@@ -203,12 +197,6 @@ def player_loop():
             if bird.y + bird.img.get_height() - 10 >= FLOOR or bird.y < -50:
                 draw_window(win, bird, pipes, base, score, 1, high_score,gameover=True)
                 run = False
-                    # pipes.clear()
-                    # game_active= False
-                    # draw_window(win, bird, pipes, base, score, 1, high_score,gameover=True)
-                    # high_score=score
-                    # update_score(score,high_score)
-                    # score = 0
 
         if game_active==True:
             base.move()
@@ -220,7 +208,6 @@ def player_loop():
             if score_sound_countdown <= 0:
                 score_sound.play()
                 score_sound_countdown = 100
-            # font_display("main")
 
 
 

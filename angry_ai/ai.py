@@ -3,6 +3,9 @@ import os
 import neat
 import pygame
 import sys
+from subprocess import call
+
+
 pygame.font.init()  # init font
 
 WIN_WIDTH = 600
@@ -15,7 +18,6 @@ pygame.display.set_caption("Flappy Bird")
 WIN = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
 gen = 0
 
-
 def eval_genomes(genomes, config):
     """
     runs the simulation of the current population of
@@ -25,7 +27,7 @@ def eval_genomes(genomes, config):
     global WIN, gen
     win = WIN
     gen += 1
-    run = True
+
     nets = []
     birds = []
     ge = []
@@ -42,29 +44,23 @@ def eval_genomes(genomes, config):
 
     clock = pygame.time.Clock()
 
+    run = True
     while run and len(birds) > 0:
-      clock.tick(20)
-      for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            run = False
-            pygame.quit()
-            quit()
-            break
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_ESCAPE:
-                # run = False
+        clock.tick(30)
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
                 pygame.quit()
                 quit()
+                os.system('main_screen.py')
                 break
-
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_SPACE:
-                run = False
-                # m.blit_screen()
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_BACKSPACE:
-                os.system("angry_ai/main_screen.py")
-                break
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                     run = False
+                     pygame.quit()
+                     call(["python", "angry_ai/main_screen.py"])
+                     quit()
 
         pipe_ind = 0
         if len(birds) > 0:
@@ -119,9 +115,13 @@ def eval_genomes(genomes, config):
         draw_window(WIN, birds, pipes, base, score, gen, pipe_ind)
 
         if score > 20:
-
+            # winner = neat.Checkpointer(nets[0])
+            # winner.save_checkpoint()
+            # print('this is the winner baby')
+            # print(winner)
+            # with gzip.open('work_bruh', 'w', compresslevel=5) as f:
+            #   pickle.dump(nets[0], f, protocol=pickle.HIGHEST_PROTOCOL)
             break
-
 
 def run(config_path):
     """This method is to configure and import the basic data and rules for the NEAT algorthem

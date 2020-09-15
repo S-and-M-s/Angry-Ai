@@ -31,9 +31,8 @@ while (cap.isOpened()):
 cap.release()
 
 cv2.destroyAllWindows()
-from x import main_menu
 
-main_menu()
+
 
 
 
