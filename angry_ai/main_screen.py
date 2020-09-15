@@ -1,21 +1,17 @@
-import sys
+
 from single_player  import player_loop
 from ai  import run
 import pygame
 import os
-# from flappy_bird import *
-
+import sys
 pygame.font.init()
-# cap.release()
-
-# cv2.destroyAllWindows()
 
 class Game():
     def __init__(self):
         pygame.init()
         self.running, self.playing = True, False
         self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY ,self.ENTER_KEY= False, False, False, False,False
-        self.DISPLAY_W, self.DISPLAY_H = 600, 670
+        self.DISPLAY_W, self.DISPLAY_H = 570, 670
         self.display = pygame.Surface((self.DISPLAY_W,self.DISPLAY_H))
         self.window = pygame.display.set_mode(((self.DISPLAY_W,self.DISPLAY_H)))
         self.font_name = 'assets/fonts/8-BITWONDER.TTF'
@@ -202,9 +198,9 @@ class CreditsMenu(Menu):
             self.game.display.fill(self.game.BLACK)
             self.game.draw_text('Credits', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 20)
             self.game.draw_text('Mais Jamil', 15, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 50)
-            self.game.draw_text('Saed Al-khateeb', 15, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 80)
+            self.game.draw_text('Saed Al khateeb', 15, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 80)
             self.game.draw_text('Mohammed Ghafri', 15, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 110)
-            self.game.draw_text('Mohamad Sheikh Al-Shabab', 15, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 140)
+            self.game.draw_text('Mohamad Sheikh Al Shabab', 15, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 140)
             self.blit_screen()
 if __name__ == "__main__":
     g = Game()
